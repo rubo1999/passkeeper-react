@@ -4,7 +4,7 @@ import FormularioFiltro from "./FormularioFiltro"
 import Clave from "./Clave"
 import Modal from "./Modal"
 
-function Home(){
+function Home({clave}){
 
     let [claves,setClaves] = useState([])
     let [editando,setEditando] = useState(false)
@@ -34,7 +34,6 @@ function Home(){
         setClaveActual(null)
     }
 
-    
 
     return(
         <>
@@ -53,7 +52,10 @@ function Home(){
                     abrirModal={abrirModal}
                     /> ) }               
             </section>
-            { editando && <Modal clave={claveActual} cerrarModal={cerrarModal} />}
+            { editando && <Modal 
+                            clave={claveActual} 
+                            cerrarModal={cerrarModal}
+                            actualizarClave={actualizarClave} />}
         </>
     )
 }

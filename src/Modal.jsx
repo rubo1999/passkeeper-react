@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 function Modal({ clave, cerrarModal, actualizarClave }) {
-  const [tipos, setTipos] = useState([]);
-  const [titulo, setTitulo] = useState(clave.titulo);
-  const [usuario, setUsuario] = useState(clave.usuario);
-  const [contraseña, setContraseña] = useState(clave.contraseña);
-  const [tipo_id, setTipo_id] = useState("0");
-  const [tipo, setTipo] = useState(clave.tipo);
+  let [tipos, setTipos] = useState([])
+  let [titulo, setTitulo] = useState(clave.titulo)
+  let [usuario, setUsuario] = useState(clave.usuario)
+  let [contraseña, setContraseña] = useState(clave.contraseña)
+  let [tipo_id, setTipo_id] = useState(clave.tipo_id)
+  let [tipo, setTipo] = useState(clave.tipo)
+  let [error, setError] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:4000/claves/tipo")
@@ -14,11 +15,11 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
       .then((datos) => setTipos(datos));
   }, []);
 
-  function cambioTipo(evento) {
+  function cambioTipo(evento){
     let idSeleccionado = evento.target.value;
     let nombreTipo = "";
-    for (let i = 0; i < tipos.length; i++) {
-      if (tipos[i].id === idSeleccionado) {
+    for(let i = 0; i < tipos.length; i++) {
+      if (tipos[i].id == idSeleccionado) {
         nombreTipo = tipos[i].nombre;
       }
     }
@@ -36,35 +37,34 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
       contraseña,
       tipo,
     };
-
-    fetch(`http://localhost:4000/claves/actualizar/${clave.id}`, {
-      method: "PUT",
-      body: JSON.stringify(datosActualizados),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((respuesta) => respuesta.json())
-      .then(({ resultado, error }) => {
-        if (!error && resultado === "ok") {
-          actualizarClave(
-            datosActualizados.id,
-            datosActualizados.titulo,
-            datosActualizados.tipo_id,
-            datosActualizados.tipo,
-            datosActualizados.usuario,
-            datosActualizados.contraseña
-          );
-          cerrarModal();
-        } else {
-          console.error("Error al actualizar la clave:", error);
+    
+    setError("")
+    if (usuario.trim() !== "" && titulo.trim() !== "" && contraseña.trim() !== ""){
+        fetch(`http://localhost:4000/claves/actualizar/${clave.id}`, {
+            method: "PUT",
+            body: JSON.stringify(datosActualizados),
+            headers: {
+              "Content-type": "application/json",
+            },
+          })
+            .then((respuesta) => respuesta.json())
+            .then(({ resultado, error }) => {
+              if (!error && resultado === "ok") {
+                actualizarClave(
+                  datosActualizados.id,
+                  datosActualizados.titulo,
+                  datosActualizados.tipo_id,
+                  datosActualizados.tipo,
+                  datosActualizados.usuario,
+                  datosActualizados.contraseña
+                );
+                cerrarModal();
+              }  
+            })
         }
-      })
-      .catch((error) => {
-        console.error("Error en la solicitud fetch:", error);
-      });
-  }
-
+        setError("Ningún campo puede estar en blanco")
+    }
+    
   return (
     <form className="modal" onSubmit={(evento) => evento.preventDefault()}>
       <div className="formulario">
@@ -100,6 +100,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
           value={contraseña}
           onChange={(evento) => setContraseña(evento.target.value)}
         />
+        <p className={error ? "visible" : "error"}>{error}</p>
         <section className="edicion">
           <button className="cancelar" onClick={() => cerrarModal()}>
             Cancelar

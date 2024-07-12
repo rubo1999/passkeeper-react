@@ -20,7 +20,7 @@ function Clave({id,titulo,usuario,contraseña,tipo,tipo_id,borrarClave,abrirModa
                         console.log("error al usuario")
                     })
                 }>Borrar</button>
-                <button className="editar" onClick={() => abrirModal({id,titulo,usuario,contraseña,tipo_id})}>Editar</button>
+                <button className="editar" onClick={() => abrirModal({id,titulo,usuario,contraseña,tipo_id,tipo})}>Editar</button>
             </section>
         </div>
     )

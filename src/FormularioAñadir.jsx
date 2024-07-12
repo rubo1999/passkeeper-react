@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 function FormularioAñadir({ crearClave }) {
-    let [titulo, setTitulo] = useState("");
-    let [usuario, setUsuario] = useState("");
-    let [contraseña, setContraseña] = useState("");
-    let [idTipo, setIdTipo] = useState("0");
-    let [error, setError] = useState("");
-    let [tipos, setTipos] = useState([]);
+    let [titulo, setTitulo] = useState("")
+    let [usuario, setUsuario] = useState("")
+    let [contraseña, setContraseña] = useState("")
+    let [idTipo, setIdTipo] = useState("0")
+    let [error, setError] = useState("")
+    let [tipos, setTipos] = useState([])
 
     const navigate = useNavigate();
 
