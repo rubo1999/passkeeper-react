@@ -14,7 +14,7 @@ function Claves(){
     let {tipo_id} = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:4000/claves/tipo/${tipo_id}`)
+        fetch(`https://api-passkeeper.onrender.com/claves/tipo/${tipo_id}`)
         .then(claves => claves.json())
         .then(claves => setClaves(claves))
     }, [tipo_id])

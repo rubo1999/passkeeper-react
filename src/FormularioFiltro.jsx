@@ -7,7 +7,7 @@ function FormularioFiltro({ obtenerTipo }){
     let [tipoSeleccionado,setTipoSeleccionado] = useState("0")
 
     useEffect(() => {
-        fetch("http://localhost:4000/claves/tipo")
+        fetch("https://api-passkeeper.onrender.com/claves/tipo")
         .then(respuesta => respuesta.json())
         .then(datos => setSecciones(datos))
     }, [])
@@ -18,7 +18,7 @@ function FormularioFiltro({ obtenerTipo }){
             <form onSubmit={evento => {
                 evento.preventDefault()
                 if(tipoSeleccionado != 0){
-                    fetch(`http://localhost:4000/claves/tipo/${tipoSeleccionado}`)
+                    fetch(`https://api-passkeeper.onrender.com/claves/tipo/${tipoSeleccionado}`)
                     .then(respuesta => respuesta.json())
                     .then(datos => obtenerTipo(datos))
                 }

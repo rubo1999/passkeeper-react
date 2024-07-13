@@ -4,14 +4,14 @@ import FormularioFiltro from "./FormularioFiltro"
 import Clave from "./Clave"
 import Modal from "./Modal"
 
-function Home({clave}){
+function Home(){
 
     let [claves,setClaves] = useState([])
     let [editando,setEditando] = useState(false)
     let [claveActual,setClaveActual] = useState(null)
 
     useEffect(() => {
-        fetch("http://localhost:4000/claves")
+        fetch("https://api-passkeeper.onrender.com/claves")
         .then(claves => claves.json())
         .then(claves => setClaves(claves))
     },[])

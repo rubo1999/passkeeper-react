@@ -13,7 +13,7 @@ function FormularioAñadir({ crearClave }) {
 
 
     useEffect(() => {
-        fetch("http://localhost:4000/claves/tipo")
+        fetch("https://api-passkeeper.onrender.com/claves/tipo")
             .then(respuesta => respuesta.json())
             .then(datos => setTipos(datos));
     }, []);
@@ -33,7 +33,7 @@ function FormularioAñadir({ crearClave }) {
                             nombreTipo = tipos[i].nombre
                         }
                     }
-                    fetch("http://localhost:4000/claves/nueva", {
+                    fetch("https://api-passkeeper.onrender.com/claves/nueva", {
                         method: "POST",
                         body: JSON.stringify({ titulo, tipo_id : idTipo, usuario, contraseña, tipo : nombreTipo  }),
                         headers: {

@@ -9,7 +9,7 @@ function Clave({id,titulo,usuario,contraseña,tipo,tipo_id,borrarClave,abrirModa
             <p>Contraseña: {contraseña}</p>
             <section className="botones">
                 <button className="borrar" onClick={() => 
-                    fetch(`http://localhost:4000/claves/borrar/${id}`,{
+                    fetch(`https://api-passkeeper.onrender.com/claves/borrar/${id}`,{
                         method: "DELETE"
                     })
                     .then(respuesta => respuesta.json())

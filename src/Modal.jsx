@@ -10,7 +10,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
   let [error, setError] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:4000/claves/tipo")
+    fetch("https://api-passkeeper.onrender.com/claves/tipo")
       .then((respuesta) => respuesta.json())
       .then((datos) => setTipos(datos));
   }, []);
@@ -40,7 +40,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
     
     setError("")
     if (usuario.trim() !== "" && titulo.trim() !== "" && contraseña.trim() !== ""){
-        fetch(`http://localhost:4000/claves/actualizar/${clave.id}`, {
+        fetch(`https://api-passkeeper.onrender.com/claves/actualizar/${clave.id}`, {
             method: "PUT",
             body: JSON.stringify(datosActualizados),
             headers: {
