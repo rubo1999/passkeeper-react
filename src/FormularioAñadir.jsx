@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 function FormularioAñadir({ crearClave }) {
     let [titulo, setTitulo] = useState("")
@@ -15,7 +15,7 @@ function FormularioAñadir({ crearClave }) {
     useEffect(() => {
         fetch("https://api-passkeeper.onrender.com/claves/tipo")
             .then(respuesta => respuesta.json())
-            .then(datos => setTipos(datos));
+            .then(datos => setTipos(datos))
     }, []);
 
 
@@ -43,12 +43,12 @@ function FormularioAñadir({ crearClave }) {
                         .then(respuesta => respuesta.json())
                         .then(({ id, error }) => {
                             if (!error) {
-                                crearClave({ id, titulo, tipo_id : idTipo, usuario, contraseña, tipo : nombreTipo });
-                                setTitulo("");
-                                setUsuario("");
-                                setContraseña("");
-                                setIdTipo("0");
-                                return navigate(`/claves/tipo/${idTipo}`);
+                                crearClave({ id, titulo, tipo_id : idTipo, usuario, contraseña, tipo : nombreTipo })
+                                setTitulo("")
+                                setUsuario("")
+                                setContraseña("")
+                                setIdTipo("0")
+                                return navigate(`/claves/tipo/${idTipo}`)
                             }
                         });
                 } else {
@@ -78,4 +78,4 @@ function FormularioAñadir({ crearClave }) {
     );
 }
 
-export default FormularioAñadir;
+export default FormularioAñadir

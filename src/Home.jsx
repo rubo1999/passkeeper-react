@@ -35,14 +35,8 @@ function Home(){
     }
 
     function actualizarClave(id, titulo, tipo_id, tipo, usuario, contraseña) {
-        setClaves(
-          claves.map((clave) =>
-            clave.id === id
-              ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña }
-              : clave
-          )
-        );
-        cerrarModal();
+        setClaves(claves.map((clave) => clave.id == id ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña } : clave))
+        cerrarModal()
       }
 
 

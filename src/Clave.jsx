@@ -1,6 +1,4 @@
 function Clave({id,titulo,usuario,contraseña,tipo,tipo_id,borrarClave,abrirModal}){
- 
-
     return(
         <div className="clave">
             <h1>{titulo}</h1>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 
 function Modal({ clave, cerrarModal, actualizarClave }) {
   let [tipos, setTipos] = useState([])
@@ -12,11 +12,11 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
   useEffect(() => {
     fetch("https://api-passkeeper.onrender.com/claves/tipo")
       .then((respuesta) => respuesta.json())
-      .then((datos) => setTipos(datos));
-  }, []);
+      .then((datos) => setTipos(datos))
+  }, [])
 
   function cambioTipo(evento){
-    let idSeleccionado = evento.target.value;
+    let idSeleccionado = evento.target.value
     let nombreTipo = "";
     for(let i = 0; i < tipos.length; i++) {
       if (tipos[i].id == idSeleccionado) {
@@ -24,8 +24,8 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
       }
     }
 
-    setTipo_id(idSeleccionado);
-    setTipo(nombreTipo);
+    setTipo_id(idSeleccionado)
+    setTipo(nombreTipo)
   }
 
   function guardarCambios() {
@@ -111,7 +111,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
         </section>
       </div>
     </form>
-  );
+  )
 }
 
-export default Modal;
+export default Modal
