@@ -1,17 +1,16 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Home'
 import Claves from './Claves'
 import '../public/estilo.css'
-import Error from './Error'
 
 
 const router = createBrowserRouter([
   {
     path : "/",
     element : <Home />,
-    errorElement : <Error />
+    errorElement : <h1>Error 404. Volver a <a href="/">Inicio</a></h1>
   },
   {
     path : "/claves/tipo/:tipo_id" ,
