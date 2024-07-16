@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 function FormularioFiltro({ obtenerTipo }){
 
-    let [secciones,setSecciones] = useState([])//Estado para almacenar las seccinoes disponibles
+    let [secciones,setSecciones] = useState([])//Estado para almacenar las secciones disponibles
     let [tipoSeleccionado,setTipoSeleccionado] = useState("0")//Estado para almacenar el tipo seleccionado en el select
 
     //Obtención de los tipos de clave en la select

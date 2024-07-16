@@ -38,15 +38,11 @@ function Claves(){
         setClaveActual(null)
     }
 
-    function actualizarClave(id,titulo,tipo_id,tipo,usuario,contraseña){
-        setClaves(claves.map(clave =>{
-            if(clave.id == id){
-                return {...clave,titulo,tipo_id,tipo,usuario,contraseña}////Creación de nuevo objeto con los datos actualizados
-            }
-            return clave//En caso de que no sea el mismo ID, retornar la clave sin ningún cambio
-        }))
+    //Ceación un nuevo objeto con los datos actualizados. En caso de que no sea el mismo id, retornar la clave sin ningún cambio
+    function actualizarClave(id, titulo, tipo_id, tipo, usuario, contraseña) {
+        setClaves(claves.map((clave) => clave.id == id ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña } : clave))
         cerrarModal()
-    }
+      }
 
     return(
         <>

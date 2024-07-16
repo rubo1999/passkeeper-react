@@ -35,6 +35,7 @@ function Home(){
         setClaveActual(null)
     }
 
+    //Ceación un nuevo objeto con los datos actualizados. En caso de que no sea el mismo id, retornar la clave sin ningún cambio
     function actualizarClave(id, titulo, tipo_id, tipo, usuario, contraseña) {
         setClaves(claves.map((clave) => clave.id == id ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña } : clave))
         cerrarModal()
@@ -58,10 +59,10 @@ function Home(){
                     abrirModal={abrirModal}
                     /> ) }               
             </section>
-            { editando && <Modal 
+            { editando ? <Modal 
                             clave={claveActual} 
                             cerrarModal={cerrarModal}
-                            actualizarClave={actualizarClave} />}
+                            actualizarClave={actualizarClave} /> : null}
         </>
     )
 }
