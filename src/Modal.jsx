@@ -38,17 +38,17 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
       tipo_id,
       usuario,
       contraseña,
-      tipo,
-    };
+      tipo
+    }
     
     setError("")
-    if (usuario.trim() !== "" && titulo.trim() !== "" && contraseña.trim() !== ""){
+    if (usuario.trim() != "" && titulo.trim() != "" && contraseña.trim() != ""){
         fetch(`https://api-passkeeper.onrender.com/claves/actualizar/${clave.id}`, {
             method: "PUT",
             body: JSON.stringify(datosActualizados),
             headers: {
-              "Content-type": "application/json",
-            },
+              "Content-type": "application/json"
+            }
           })
             .then((respuesta) => respuesta.json())
             .then(({ resultado, error }) => {
@@ -60,8 +60,8 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
                   datosActualizados.tipo,
                   datosActualizados.usuario,
                   datosActualizados.contraseña
-                );
-                cerrarModal();
+                )
+                cerrarModal()
               }  
             })
         }

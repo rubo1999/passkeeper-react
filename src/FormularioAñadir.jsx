@@ -27,7 +27,7 @@ function FormularioAñadir({ crearClave }) {
                 setError("")
 
                 if (usuario.trim() !== "" && titulo.trim() !== "" && contraseña.trim() !== "" && idTipo !== "0") {
-                    let nombreTipo = "";
+                    let nombreTipo = ""
                     //Bucle para buscar el nombre del tipo de clave seleccionado
                     for(let i = 0; i < tipos.length; i++){
                         if(tipos[i].id == idTipo){
