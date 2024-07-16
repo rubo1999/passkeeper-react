@@ -6,10 +6,11 @@ import Modal from "./Modal"
 
 function Home(){
 
-    let [claves,setClaves] = useState([])
-    let [editando,setEditando] = useState(false)
-    let [claveActual,setClaveActual] = useState(null)
+    let [claves,setClaves] = useState([])//Estado para almacenar todas las claves
+    let [editando,setEditando] = useState(false)//Estado para controlar si se está editando o no
+    let [claveActual,setClaveActual] = useState(null)//Almacena la clave actual que está editándose
 
+    //Carga de todas las claves
     useEffect(() => {
         fetch("https://api-passkeeper.onrender.com/claves")
         .then(claves => claves.json())

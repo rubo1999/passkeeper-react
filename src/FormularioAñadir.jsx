@@ -5,13 +5,13 @@ function FormularioAñadir({ crearClave }) {
     let [titulo, setTitulo] = useState("")
     let [usuario, setUsuario] = useState("")
     let [contraseña, setContraseña] = useState("")
-    let [idTipo, setIdTipo] = useState("0")
+    let [idTipo, setIdTipo] = useState("0")//Estado para el tipo de clave seleccionado
     let [error, setError] = useState("")
-    let [tipos, setTipos] = useState([])
+    let [tipos, setTipos] = useState([])//Estado para almacenar los tipos de clave
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-
+    //Obtención de los tipos de clave en la select
     useEffect(() => {
         fetch("https://api-passkeeper.onrender.com/claves/tipo")
             .then(respuesta => respuesta.json())
@@ -23,11 +23,12 @@ function FormularioAñadir({ crearClave }) {
     return (
         <>
             <form className="añadir" onSubmit={evento => {
-                evento.preventDefault();
-                setError("");
+                evento.preventDefault()
+                setError("")
 
                 if (usuario.trim() !== "" && titulo.trim() !== "" && contraseña.trim() !== "" && idTipo !== "0") {
                     let nombreTipo = "";
+                    //Bucle para buscar el nombre del tipo de clave seleccionado
                     for(let i = 0; i < tipos.length; i++){
                         if(tipos[i].id == idTipo){
                             nombreTipo = tipos[i].nombre
@@ -52,7 +53,7 @@ function FormularioAñadir({ crearClave }) {
                             }
                         });
                 } else {
-                    setError("Ningún campo puede estar en blanco");
+                    setError("Ningún campo puede estar en blanco")
                 }
             }}>
                 <select value={idTipo} onChange={evento => setIdTipo(evento.target.value)}>

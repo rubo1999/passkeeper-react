@@ -7,12 +7,13 @@ import Modal from "./Modal"
 
 function Claves(){
 
-    let [claves,setClaves] = useState([])
-    let [editando,setEditando] = useState(false)
-    let [claveActual,setClaveActual] = useState(null)
+    let [claves,setClaves] = useState([]) //Almacena las claves
+    let [editando,setEditando] = useState(false) //Estado para controlar si se está editando o no
+    let [claveActual,setClaveActual] = useState(null)//Almacena la clave actual que está editándose
 
     let {tipo_id} = useParams()
 
+    //Carga de las claves del tipo determinado que se saca del useParams con la dependencia en el useEffect
     useEffect(() => {
         fetch(`https://api-passkeeper.onrender.com/claves/tipo/${tipo_id}`)
         .then(claves => claves.json())
@@ -40,9 +41,9 @@ function Claves(){
     function actualizarClave(id,titulo,tipo_id,tipo,usuario,contraseña){
         setClaves(claves.map(clave =>{
             if(clave.id == id){
-                return {...clave,titulo,tipo_id,tipo,usuario,contraseña}
+                return {...clave,titulo,tipo_id,tipo,usuario,contraseña}////Creación de nuevo objeto con los datos actualizados
             }
-            return clave
+            return clave//En caso de que no sea el mismo ID, retornar la clave sin ningún cambio
         }))
         cerrarModal()
     }
@@ -64,10 +65,10 @@ function Claves(){
                 abrirModal={abrirModal} />
                 )}             
             </section>
-            { editando && <Modal 
+            { editando ? <Modal 
                             clave={claveActual} 
                             cerrarModal={cerrarModal} 
-                            actualizarClave={actualizarClave} /> }
+                            actualizarClave={actualizarClave} /> : null }
         </>
     )
 }

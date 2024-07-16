@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 function Modal({ clave, cerrarModal, actualizarClave }) {
-  let [tipos, setTipos] = useState([])
+  let [tipos, setTipos] = useState([])//Estado para almacenar los tipos
   let [titulo, setTitulo] = useState(clave.titulo)
   let [usuario, setUsuario] = useState(clave.usuario)
   let [contraseña, setContraseña] = useState(clave.contraseña)
@@ -9,15 +9,17 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
   let [tipo, setTipo] = useState(clave.tipo)
   let [error, setError] = useState("")
 
+  //Obtención de los tipos de clave en la select
   useEffect(() => {
     fetch("https://api-passkeeper.onrender.com/claves/tipo")
       .then((respuesta) => respuesta.json())
       .then((datos) => setTipos(datos))
   }, [])
 
+  //Bucle para buscar el nombre del tipo de clave seleccionado
   function cambioTipo(evento){
     let idSeleccionado = evento.target.value
-    let nombreTipo = "";
+    let nombreTipo = ""
     for(let i = 0; i < tipos.length; i++) {
       if (tipos[i].id == idSeleccionado) {
         nombreTipo = tipos[i].nombre;
@@ -29,6 +31,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
   }
 
   function guardarCambios() {
+    //Objeto con los datos actualizados de la clave
     let datosActualizados = {
       id: clave.id,
       titulo,
@@ -70,13 +73,9 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
       <div className="formulario">
         <p>Clasificación</p>
         <select value={tipo_id} onChange={cambioTipo}>
-          <option value="0" disabled>
-            Seleccione el tipo
-          </option>
+          <option value="0" disabled>Seleccione el tipo</option>
           {tipos.map(({ id, nombre }) => (
-            <option key={id} value={id}>
-              {nombre}
-            </option>
+            <option key={id} value={id}>{nombre}</option>
           ))}
         </select>
         <p>Título</p>
