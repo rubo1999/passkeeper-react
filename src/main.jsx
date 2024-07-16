@@ -4,12 +4,14 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './Home'
 import Claves from './Claves'
 import '../public/estilo.css'
+import Error from './Error'
 
 
 const router = createBrowserRouter([
   {
     path : "/",
-    element : <Home />
+    element : <Home />,
+    errorElement : <Error />
   },
   {
     path : "/claves/tipo/:tipo_id" ,

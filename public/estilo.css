@@ -176,6 +176,13 @@ input[type="text"]{
     display:block;
     margin: 15px 0 0 25px;
 }
+.fallo{
+    margin-left: 25px;
+    margin-top: 25px;
+}
+.fallo p{
+    font-size: 1.3em;
+}
 
 
 @media screen and (max-width: 900px){
