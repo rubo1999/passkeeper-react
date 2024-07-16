@@ -76,7 +76,7 @@ function FormularioAñadir({ crearClave }) {
                 <p className={error ? "visible" : "error"}>{error}</p>
             </form>
         </>
-    );
+    )
 }
 
 export default FormularioAñadir
