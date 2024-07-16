@@ -9,8 +9,7 @@ import '../public/estilo.css'
 const router = createBrowserRouter([
   {
     path : "/",
-    element : <Home />,
-    errorElement : <h1>Error 404. Volver a <a href="/">Inicio</a></h1>
+    element : <Home />
   },
   {
     path : "/claves/tipo/:tipo_id" ,
