@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 function Navegacion(){
     return (
         <nav className="cabecera">
-            <img src="../public/logo.png"/>
+            <img src="/logo.png"/>
             <ul>
                 <li><Link to="/" className="enlace">Inicio</Link></li>
                 <li><Link to="/claves/tipo/1" className="enlace">Bancos</Link></li>
