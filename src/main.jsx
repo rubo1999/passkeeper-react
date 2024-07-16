@@ -15,8 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path : "/claves/tipo/:tipo_id" ,
-    element : <Claves />,
-    errorElement : <Error />
+    element : <Claves />
   }
 ])
 
