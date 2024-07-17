@@ -12,8 +12,8 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
   //Obtención de los tipos de clave en la select
   useEffect(() => {
     fetch("https://api-passkeeper.onrender.com/claves/tipo")
-      .then((respuesta) => respuesta.json())
-      .then((datos) => setTipos(datos))
+      .then(respuesta => respuesta.json())
+      .then(datos => setTipos(datos))
   }, [])
 
   //Bucle para buscar el nombre del tipo de clave seleccionado
@@ -52,7 +52,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
           })
             .then((respuesta) => respuesta.json())
             .then(({ resultado, error }) => {
-              if (!error && resultado === "ok") {
+              if (!error && resultado == "ok") {
                 actualizarClave(
                   datosActualizados.id,
                   datosActualizados.titulo,
@@ -69,7 +69,7 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
     }
     
   return (
-    <form className="modal" onSubmit={(evento) => evento.preventDefault()}>
+    <form className="modal" onSubmit={evento => evento.preventDefault()}>
       <div className="formulario">
         <p>Clasificación</p>
         <select value={tipo_id} onChange={cambioTipo}>
@@ -83,21 +83,21 @@ function Modal({ clave, cerrarModal, actualizarClave }) {
           type="text"
           placeholder="Indique el nuevo título"
           value={titulo}
-          onChange={(evento) => setTitulo(evento.target.value)}
+          onChange={evento => setTitulo(evento.target.value)}
         />
         <p>Usuario</p>
         <input
           type="text"
           placeholder="Indique el nuevo usuario"
           value={usuario}
-          onChange={(evento) => setUsuario(evento.target.value)}
+          onChange={evento => setUsuario(evento.target.value)}
         />
         <p>Contraseña</p>
         <input
           type="text"
           placeholder="Indique la nueva contraseña"
           value={contraseña}
-          onChange={(evento) => setContraseña(evento.target.value)}
+          onChange={evento => setContraseña(evento.target.value)}
         />
         <p className={error ? "visible" : "error"}>{error}</p>
         <section className="edicion">

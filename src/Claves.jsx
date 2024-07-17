@@ -40,7 +40,7 @@ function Claves(){
 
     //Ceación un nuevo objeto con los datos actualizados. En caso de que no sea el mismo id, retornar la clave sin ningún cambio
     function actualizarClave(id, titulo, tipo_id, tipo, usuario, contraseña) {
-        setClaves(claves.map((clave) => clave.id == id ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña } : clave))
+        setClaves(claves.map(clave => clave.id == id ? { ...clave, titulo, tipo_id, tipo, usuario, contraseña } : clave))
         cerrarModal()
       }
 
@@ -49,17 +49,17 @@ function Claves(){
         <Navegacion />
             <FormularioAñadir crearClave={crearClave} />
             <section className="claves">
-            {claves.length == 0 ? <li>No hay ninguna clave registrada</li> : claves.map(({ id, titulo, tipo_id, tipo, usuario, contraseña }) => <Clave 
-                key={id} 
-                id={id} 
-                titulo={titulo} 
-                tipo_id={tipo_id} 
-                usuario={usuario} 
-                contraseña={contraseña} 
-                tipo={tipo} 
-                borrarClave={borrarClave}
-                abrirModal={abrirModal} />
-                )}             
+                {claves.length == 0 ? <li>No hay ninguna clave registrada</li> : claves.map(({ id, titulo, tipo_id, tipo, usuario, contraseña }) => <Clave 
+                    key={id} 
+                    id={id} 
+                    titulo={titulo} 
+                    tipo_id={tipo_id} 
+                    usuario={usuario} 
+                    contraseña={contraseña} 
+                    tipo={tipo} 
+                    borrarClave={borrarClave}
+                    abrirModal={abrirModal} />
+                    )}             
             </section>
             { editando ? <Modal 
                             clave={claveActual} 
